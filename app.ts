@@ -1,3 +1,7 @@
+//import express = require('express');
+//import express from 'express'; sometimes works
+//import * as express from 'express'; always works
+
 import express = require('express');  //required
 const app = express();  //required
 
@@ -26,6 +30,8 @@ app.get('/aboutMe', (req,res,next) => {
 app.get('/contact', (req,res,next) => {
   res.render('contact.jade');
 });
+
+app.use('/api/v1/cars',require('./routes/carRoutes'));
 
 app.get('/*', (req,res,next) => {  //any time someone contacts us at the route, do the following, this particular needs to be at the bottom
   res.render('index');
