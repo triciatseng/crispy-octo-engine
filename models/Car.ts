@@ -30,20 +30,20 @@ export default class Car implements app.i.ICar{
       if(!obj_image.description) throw new Error('The description property is required for this vehicle.');
       if(!obj_image.year) throw new Error('The year property is required for this vehicle.');
       if(!obj_image.color) throw new Error('The color property is required for this vehicle.');
-      if(!obj_image.isNew) throw new Error('The isNew property is required for this vehicle.');
+      if(!obj_image.isNew && obj_image.isNew !== false) throw new Error('The isNew property is required for this vehicle.');
       if(!obj_image.worth) throw new Error('The worth property is required for this vehicle.');
       if(!obj_image.numDoors) throw new Error('The numDoors property is required for this vehicle.');
 
 
       this.image = obj_image.image;
-      this.make = make;
-      this.model = model;
-      this.description = description;
-      this.year = parseInt(year.toString());
-      this.color = color;
-      this.isNew = isNew;
-      this.worth = worth;
-      this.numDoors = numDoors;
+      this.make = obj_image.make;
+      this.model = obj_image.model;
+      this.description = obj_image.description;
+      this.year = parseInt(obj_image.year.toString());
+      this.color = obj_image.color;
+      this.isNew = obj_image.isNew;
+      this.worth = obj_image.worth;
+      this.numDoors = obj_image.numDoors;
     } else {
       if(!obj_image) throw new Error('The image property is required for this vehicle.');
       if(!make) throw new Error('The make property is required for this vehicle.');
@@ -51,7 +51,7 @@ export default class Car implements app.i.ICar{
       if(!description) throw new Error('The description property is required for this vehicle.');
       if(!year) throw new Error('The year property is required for this vehicle.');
       if(!color) throw new Error('The color property is required for this vehicle.');
-      if(!isNew) throw new Error('The isNew property is required for this vehicle.');
+      if(!isNew && isNew !== false) throw new Error('The isNew property is required for this vehicle.');
       if(!worth) throw new Error('The worth property is required for this vehicle.');
       if(!numDoors) throw new Error('The numDoors property is required for this vehicle.');
 

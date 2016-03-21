@@ -1,7 +1,12 @@
+import * as express from 'express';
 import Car from '../models/Car';
 let cars: Array<app.i.ICar> = [];
 
 seedCars(cars);
+
+export function getAll(req:express.Request,res:express.Response,next: Function){
+  res.json(cars); //status code of 200, take array of cars and put into json
+}
 
 export function seedCars(cars: Array<app.i.ICar>){
   //image,make,model,description,year,color,isNew,worth,numDoors
