@@ -1,17 +1,24 @@
 {
-  "name": "node",
+  "name": "app",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "body-parser": "^1.15.0",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
     "jade": "^1.11.0",
     "uuid": "^2.0.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "node-mocks-http": "^1.5.2",
+    "should": "^8.2.2",
+    "supertest": "^1.2.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "test": "mocha test/unit"
   },
   "author": "",
   "license": "ISC"

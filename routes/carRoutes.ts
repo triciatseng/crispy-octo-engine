@@ -1,6 +1,7 @@
 import * as controller from '../api/carController';
-
 import * as express from 'express'; //installed from npm, so no need for filepath
+import * as bodyParser from 'body-parser';
+
 const router = express.Router();
 
 //Base route -- /api/v1/cars
@@ -8,5 +9,7 @@ const router = express.Router();
 //GET: /api/v1/cars
 router.get('/', controller.getAll);
 
+router.use(bodyParser.json());
+router.post('/',controller.create);
 
 export = router;

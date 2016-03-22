@@ -2,13 +2,15 @@
 //import express from 'express'; sometimes works
 //import * as express from 'express'; always works
 
-import express = require('express');  //required
+import * as express from 'express';  //required
 const app = express();  //required
 
 //config
 app.set('views','./views'); // . means current directory
 app.engine('html',require('ejs').renderFile); //tells express how to handle html
 app.set('view engine', 'html'); //turns index.html = index
+
+// app.use(bodyParser.json());
 
 app.use('/',express.static('./ngApp'));
 app.use('/scripts',express.static('./bower_components'));
@@ -37,6 +39,15 @@ app.get('/*', (req,res,next) => {  //any time someone contacts us at the route, 
   res.render('index');
 });
 
-app.listen(3000, () => {
+app.use((req,res,next) => {
+  let err= {status: 404, message:'Page not found.'};
+  next(err);
+});
+
+app.use((err: any, req: express.Request, res: express.Response, next: Function) => {
+  res.status(err.status || 500).send({message: err.message, err: err});
+});
+
+export = app.listen(3000, () => {
   console.log('Server is running on localhost:3000');
 }); //anything that hits port3000, run this server. required line to start server. use 3000 or 8080.

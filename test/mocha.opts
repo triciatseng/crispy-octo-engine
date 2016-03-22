@@ -1,0 +1,6 @@
+--require should
+-R nyan
+--ui bdd
+--timeout 90
+--colors
+--recursive
