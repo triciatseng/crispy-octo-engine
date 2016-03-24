@@ -2,19 +2,19 @@ import * as express from 'express';
 import Car from '../models/Car';
 import db from '../models/db';
 
-// let cars: Array<app.i.ICar> = [];
-
-// seedCars(cars);
-
-export function getAll(req:express.Request,res:express.Response,next: Function){
-  res.json(db.cars); //status code of 200, take array of cars and put into json
+export function getAll(req: express.Request, res: express.Response, next: Function) {
+  res.json(db.cars);
 }
 
-export function getOne(req:express.Request,res:express.Response,next:Function){
+export function getOne(req: express.Request, res: express.Response, next: Function) {
+  let car = db.cars.filter((c) => c._id === req.params.id)[0];
+  if(!car) return next({ status: 404, message: "Could not find the car you requested." });
 
+  res.json(car);
 }
 
-export function create(req:express.Request, res:express.Response,next:Function){
+export function create(req: express.Request, res: express.Response, next: Function) {
+  // the car from the service is in req.body
   try {
     let car = new Car(<app.i.ICar>req.body);
     db.cars.push(car);
@@ -24,18 +24,27 @@ export function create(req:express.Request, res:express.Response,next:Function){
   }
 }
 
-export function update(req:express.Request, res:express.Response,next:Function){
+export function update(req: express.Request, res: express.Response, next: Function) {
+  let car = db.cars.filter((c) => c._id === req.params.id)[0];
+  if(!car) return next({ status: 404, message: 'Could not find the car you requested.' });
 
+  if(req.body.image) car.image = req.body.image;
+  if(req.body.make) car.make = req.body.make;
+  if(req.body.model) car.model = req.body.model;
+  if(req.body.color) car.color = req.body.color;
+  if(req.body.year) car.year = req.body.year;
+  if(req.body.worth) car.worth = req.body.worth;
+  if(req.body.numDoors) car.numDoors = req.body.numDoors;
+  if(req.body.description) car.description = req.body.description;
+  if(req.body.isNew) car.isNew = req.body.isNew;
+
+  res.json(car);
 }
 
-export function remove(req:express.Request, res:express.Response,next:Function){
+export function remove(req: express.Request, res: express.Response, next: Function) {
+  let car = db.cars.filter((c) => c._id === req.params.id)[0];
+  if(!car) return next({ status: 404, message: 'Could not find the car you requested.' });
 
+  db.cars.splice(db.cars.indexOf(car), 1);
+  res.json({ message: 'Removed the car from the database.' });
 }
-// export function seedCars(cars: Array<app.i.ICar>){
-//   //image,make,model,description,year,color,isNew,worth,numDoors
-//   cars.push(new Car('http://www.toyotareference.com/colors/camry/toyota_camry_02_6S7_02.jpg','Toyota','Camry','my first car',2002,'Green',false,'10k',4));
-//   cars.push(new Car('http://sp.dlron.us/photo/pix320/sscusa/acura/mdx/2016/5od-4/sideview.jpg','Acura','MDX','my current car',2016,'Black',true,'40k',4));
-//   cars.push(new Car('http://www.usedcarsgroup.com/2000-ford-expedition-sanford-fl-i4806361862076116651-2.jpg','Ford','Expedition','i learned how to drive using this car',2000,'Green',false,'5,000',4));
-//   cars.push(new Car('http://www.usedcarsgroup.com/2008-volkswagen-jetta-west_seneca-ny-i3745166321341996032-2.jpg','Volkswagen','Jetta','my previous car',2008,'Silver',false,'$9,000',4));
-//   cars.push(new Car('https://upload.wikimedia.org/wikipedia/commons/6/67/2010_Lexus_RX350_1_--_01-13-2010.jpg','Lexus','RX350','everyone has this car',2010,'Silver',false,'30k',4));
-// }

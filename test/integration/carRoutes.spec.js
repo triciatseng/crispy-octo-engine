@@ -1,10 +1,10 @@
-'use strict';
+"use strict";
 let request = require('supertest');
 let should = require('should');
 let server = require('../../app');
 let utils = require('../helpers/utils');
 
-describe('Car Routes',() => {
+describe('Car Routes', () => {
   beforeEach((done) => {
     utils.resetDB();
     done();
@@ -38,30 +38,32 @@ describe('Car Routes',() => {
     });
     it('Should return a 200 with a body, and the object', (done) => {
       let car = {
-        image: 'image url',
+        image: 'test image',
         make: 'test make',
         model: 'test model',
         description: 'test description',
-        year: 2016,
+        year: 2000,
         color: 'test color',
         isNew: true,
-        numDoors: 2,
-        worth: 'test worth'}
+        numDoors: 4,
+        worth: "test worth"
+      };
+
       request(server)
         .post('/api/v1/cars')
         .send(car)
         .expect(200)
         .expect((res) => {
           should.exist(res.body._id);
-          res.body.image.should.equal('image url');
-          res.body.make.should.equal('test make');
-          res.body.model.should.equal('test model');
-          res.body.description.should.equal('test description');
-          res.body.year.should.equal(2016);
-          res.body.color.should.equal('test color');
+          res.body.image.should.equal("test image");
+          res.body.make.should.equal("test make");
+          res.body.model.should.equal("test model");
+          res.body.description.should.equal("test description");
+          res.body.year.should.equal(2000);
+          res.body.color.should.equal("test color");
           res.body.isNew.should.equal(true);
-          res.body.numDoors.should.equal(2);
-          res.body.worth.should.equal('test worth');
+          res.body.numDoors.should.equal(4);
+          res.body.worth.should.equal("test worth");
         })
         .end(done);
     });

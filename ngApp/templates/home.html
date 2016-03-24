@@ -1,1 +1,32 @@
-<h1>Home Page</h1>
+<div class="container form-inline">
+  <h1>Current List of Cars</h1>
+  <div class="well" style="text-align:left;">
+    <center>
+    <label>Search by Make</label>&nbsp;&nbsp;<input type="text" ng-model="search.make" class="form-control" maxlength="25" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label>Search by Model</label>&nbsp;&nbsp;<input type="text" ng-model="search.model" class="form-control" maxlength="25" />
+        </center>
+  </div>
+	<div class="container-inline">
+    <center>
+    <table style="border-spacing: 10px; border-collapse:separate;">
+      <thead>
+        <tr>
+          <th>Make</th>
+          <th>Model</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  ng-repeat="c in vm.cars | filter: search">
+          <td>{{c.make}}</td>
+          <td>{{c.model}}</td>
+          <td><button type="button" class="btn btn-success" ng-click="vm.openModal(c)">More Info</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </center>
+	</div><br />
+
+</div>
+<div class="well">
+  database started in March 2016
+</div>

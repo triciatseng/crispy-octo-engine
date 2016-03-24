@@ -1,0 +1,49 @@
+<div class="modal-header">
+  <h3 class="modal-title" style="text-align: center;">Car Details</h3>
+</div>
+<div class="modal-body">
+  <p>
+    <center>
+      <img ng-src="{{modal.entry.image}}" height="250" width="350"/>
+
+    <br />
+    <br />
+    <table style="border: 1px solid black; border-spacing: 10px; border-collapse:separate;">
+      <thead style="text-align: center;">
+        <tr>
+          <th>Make</th>
+          <th>Model</th>
+          <th>Year</th>
+          <th>Color</th>
+          <th>Doors</th>
+          <th>Current Value</th>
+          <th>Condition</th>
+        </tr>
+      </thead>
+      <tbody style="text-align: center;">
+        <tr>
+          <td>{{modal.entry.make}}</td>
+          <td>{{modal.entry.model}}</td>
+          <td>{{modal.entry.year}}</td>
+          <td>{{modal.entry.color}}</td>
+          <td>{{modal.entry.numDoors}}</td>
+          <td>{{modal.entry.worth}}</td>
+          <td ng-show="!modal.entry.isNew">Used</td>
+          <td ng-show="modal.entry.isNew">New</td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <p>
+      <strong>Description:</strong>&nbsp;&nbsp;{{modal.entry.description}}
+
+    </p>
+  </center>
+
+
+  </p><br />
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-warning" ng-click="modal.cancel()">close</button>
+</div>

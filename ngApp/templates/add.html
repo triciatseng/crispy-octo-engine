@@ -1,0 +1,36 @@
+<div class="container form-inline">
+  <h1>Add a Car</h1>
+  <p>Feel like adding a car to the database? Please fill out the form below!</p>
+  <br />
+  <div class="contain-inline">
+  <form ng-submit="vm.addCar()" style="display: inline-block; padding: 20px;" name="addCarForm">
+      <input type="text" name="make" ng-model="vm.car.make" placeholder="make" class="form-control" required/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="text" name="model" ng-model="vm.car.model" placeholder="model" class="form-control" required/>
+      <br /><br />
+      <input type="number" name="year" ng-model="vm.car.year" placeholder="year" class="form-control" required/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="text" name="color" ng-model="vm.car.color" placeholder="color" class="form-control" required/>
+      <br /><br />
+      <label>Number of Doors</label>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <label>Vehicle Condition</label>
+      <br />&nbsp;&nbsp;&nbsp;<input type="radio" name="numDoors" ng-model="vm.car.numDoors" ng-value=2 class="form-control" required/>&nbsp;&nbsp;&nbsp;<label>2</label>&nbsp;&nbsp;&nbsp;<input type="radio" name="numDoors" ng-model="vm.car.numDoors" ng-value=4 class="form-control" required />
+      &nbsp;&nbsp;&nbsp;<label>4</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;<input type="radio" name="isNew" ng-model="vm.car.isNew" ng-value=true class="form-control" required/>&nbsp;&nbsp;&nbsp;<label>New</label>&nbsp;&nbsp;&nbsp;<input type="radio" name="isNew" ng-model="vm.car.isNew" ng-value=false class="form-control" required />
+      &nbsp;&nbsp;&nbsp;<label>Used</label>
+      <br /><br />
+      <input type="text" name="worth" ng-model="vm.car.worth" placeholder="current value" class="form-control" required/>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="text" name="image" ng-model="vm.car.image" placeholder="image url" class="form-control" required/>
+      <br />
+      <br />
+      <textarea name="description" cols="56" rows="4" ng-model="vm.car.description" placeholder="description" class="form-control" required/></textarea>
+      <br />
+      <br />
+  <div style="text-align:center;">
+    <button type="submit" class="btn btn-success">Submit</button>
+  </div>
+  </form>
+  </div>
+</div>
